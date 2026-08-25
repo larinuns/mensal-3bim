@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER --> 
+<header>
+  <div class="header-logo">
+    <div class="header-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="4" fill="#0f2219"/>
+        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="#0f2219" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <span class="header-name">LuzVerde</span>
+  </div>
+  <div class="header-links">
+    <a href="#solucoes">Soluções</a>
+    <a href="#como-funciona">Como Funciona</a>
+    <a href="#impacto">Impacto</a>
+  </div>
+  <button class="btn-header" id="theme-toggle" onclick="toggleTheme()">Tema claro</button>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+    </svg>
+  </button>
+</header>
+
+  <div class="mobile-menu">
+    <a href="#solucoes">Soluções</a>
+    <a href="#como-funciona">Como Funciona</a>
+    <a href="#impacto">Impacto</a>
+  </div>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><span></span>Os Objetivos de Desenvolvimento Sustentável no Brasil.</div>
+      <h1>Energia limpa <em>ao alcance</em> de todos</h1>
+      <p> Assegurar o acesso confiável, sustentável, moderno e a preço acessível à energia para todas e todos</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">Foi</button>
+        <button class="btn-ghost" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+          Ver como funciona
+        </button>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">87%</div>
+        <div class="stat-label">redução na conta de luz</div>
+        <div class="stat-sub">média dos nossos clientes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">12 anos</div>
+        <div class="stat-label">payback médio</div>
+        <div class="stat-sub">retorno garantido</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">2,4 t</div>
+        <div class="stat-label">CO₂ evitado/ano</div>
+        <div class="stat-sub">por residência conectada</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">340 mil</div>
+        <div class="stat-label">famílias atendidas</div>
+        <div class="stat-sub">em todo o Brasil</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Rolar</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solucoes">
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <span class="section-label">Nossas soluções</span>
+        <h2>Energia renovável para cada realidade brasileira</h2>
+      </div>
+      <p>Do apartamento urbano à comunidade ribeirinha, temos uma solução desenhada para o seu contexto — com financiamento acessível e suporte completo.</p>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab(0,this)">Solar</button>
+      <button class="tab-btn" onclick="showTab(1,this)">Eólica</button>
+      <button class="tab-btn" onclick="showTab(2,this)">Rural</button>
+    </div>
+    <div class="tab-panel active" id="tab-0">
+      <div>
+        <div class="sol-num">01</div>
+        <h3 class="sol-title">Energia Solar Residencial</h3>
+        <p class="sol-desc">Painéis fotovoltaicos instalados no telhado da sua casa. Zero entrada para famílias de baixa renda. Economia desde o primeiro mês de operação.</p>
+        <a href="#" class="sol-link">Saiba mais sobre solar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="sol-img">
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=500&fit=crop&auto=format" alt="Painéis solares em campo verde" />
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-1">
+      <div>
+        <div class="sol-num">02</div>
+        <h3 class="sol-title">Energia Eólica Comunitária</h3>
+        <p class="sol-desc">Parques eólicos compartilhados entre comunidades. Cada família recebe créditos proporcionais à sua cota mensal de geração.</p>
+        <a href="#" class="sol-link">Saiba mais sobre eólica <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="sol-img">
+        <img src="https://images.unsplash.com/photo-1508791290064-c27cc1ef7a9a?w=800&h=500&fit=crop&auto=format" alt="Turbinas eólicas em campo" />
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-2">
+      <div>
+        <div class="sol-num">03</div>
+        <h3 class="sol-title">Minirredes Rurais</h3>
+        <p class="sol-desc">Sistemas híbridos solar + bateria para comunidades isoladas da rede elétrica convencional. Luz e dignidade onde mais se precisa.</p>
+        <a href="#" class="sol-link">Saiba mais sobre rural <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="sol-img">
+        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&h=500&fit=crop&auto=format" alt="Painel solar sob céu azul" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="como-funciona">
+  <div class="how-inner">
+    <span class="section-label">Como funciona</span>
+    <h2>Do cadastro à energia limpa em 4 passos</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Diagnóstico gratuito</h4>
+        <p>Analisamos seu consumo, tipo de imóvel e localização para indicar a melhor solução.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Projeto sob medida</h4>
+        <p>Nossa equipe projeta o sistema ideal, com cronograma, custos e retorno estimado.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Instalação rápida</h4>
+        <p>Instalação profissional em até 3 dias, com garantia de 25 anos nos equipamentos.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Monitoramento contínuo</h4>
+        <p>Acompanhe a geração e economia em tempo real pelo nosso aplicativo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <h2>Pronto para fazer parte da <em>revolução verde</em>?</h2>
+    <p>Mais de 340 mil famílias já economizam na conta de luz e contribuem para um Brasil mais limpo. Sua vez chegou.</p>
+    <div class="cta-btns">
+      <button class="btn-primary">Simular economia agora</button>
+      <button class="btn-ghost">Falar com um especialista</button>
+    </div>
+  </div>
+</section>
+</main>
+
+ <!-- IMPACT -->
+<section class="impact-section" id="impacto">
+  <div class="impact-inner">
+    <h2>A transição energética começa <em>na sua casa</em></h2>
+    <div class="impact-stats">
+      <div class="impact-stat">
+        <div class="value">2026</div>
+        <div class="sub">Meta: 1 milhão de lares</div>
+      </div>
+      <div class="impact-divider"></div>
+      <div class="impact-stat">
+        <div class="value">5 GWh</div>
+        <div class="sub">Energia gerada em 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+  
+<script>
+    function showTab(index, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + index).classList.add('active');
+    btn.classList.add('active');
+    }
+    function toggleTheme() {
+      const body = document.body;
+      const isDark = body.classList.toggle('dark-theme');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      const button = document.getElementById('theme-toggle');
+      if (button) button.textContent = isDark ? 'Tema claro' : 'Tema escuro';
+    }
+
+    function applyStoredTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const button = document.getElementById('theme-toggle');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        if (button) button.textContent = 'Tema claro';
+      } else {
+        if (button) button.textContent = 'Tema escuro';
+      }
+    }
+
+    applyStoredTheme();</script>
+</html>   
