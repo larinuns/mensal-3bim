@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER --> 
+<header>
+  <div class="header-logo">
+    <div class="header-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="4" fill="#0f2219"/>
+        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="#0f2219" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <span class="header-name">LuzVerde</span>
+  </div>
+  <div class="header-links">
+    <a href="#inicio">Início</a>
+    <a href="#solucoes">Soluções</a>
+    <a href="#como-funciona">Como Funciona</a>
+    <a href="#impacto">Impacto</a>
+  </div>
+  <button class="btn-header" id="theme-toggle" onclick="toggleTheme()">Tema claro</button>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+    </svg>
+  </button>
+</header>
+
+  <div class="mobile-menu">
+    <a href="#inicio">Início</a>
+    <a href="#solucoes">Soluções</a>
+    <a href="#como-funciona">Como Funciona</a>
+    <a href="#impacto">Impacto</a>
+  </div>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><span></span>Os Objetivos de Desenvolvimento Sustentável no Brasil.</div>
+      <h1>Energia limpa <em>ao alcance</em> de todos</h1>
+      <p> Assegurar o acesso confiável, sustentável e moderno à energia para todas e todos</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.getElementById('solucoes').scrollIntoView({behavior:'smooth'})">Analisar nossas soluções</button>
+        <button class="btn-ghost" onclick="document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'})">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+          Ver como funciona
+        </button>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">88,5%</div>
+        <div class="stat-label">de redução na conta de luz</div>
+        <div class="stat-sub">de HCFC's até 2027</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">UNIDO</div>
+        <div class="stat-label">Organização Internacional</div>
+        <div class="stat-sub">acelera tecnologias de energia limpa</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">MRV</div>
+        <div class="stat-label">Criação de um sistema nacional</div>
+        <div class="stat-sub">de monitoramento, relato e verificação</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">Até 2050</div>
+        <div class="stat-label">Descarbonização</div>
+        <div class="stat-sub">Transformar a indústria para alcançar emissões líquidas zero</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Rolar</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solucoes">
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <span class="section-label">Nossas soluções</span>
+        <h2>Energia renovável para cada realidade brasileira</h2>
+      </div>
+      <p style="font-family: palatino">“Um Brasil mais sustentável depende de políticas que tornem a energia limpa não apenas possível, mas também acessível.”</p>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab(0,this)">Acesso</button>
+      <button class="tab-btn" onclick="showTab(1,this)">Participação</button>
+      <button class="tab-btn" onclick="showTab(2,this)">Taxa</button>
+    </div>
+    <div class="tab-panel active" id="tab-0">
+      <div>
+        <div class="sol-num">7.1</div>
+        <h3 class="sol-title">Acesso à Energia Limpa</h3>
+        <p class="sol-desc">Assegurar o acesso universal, confiável, moderno e a preços acessíveis a serviços de energia.</p>
+        <a href="./acesso.html" target="_self" class="sol-link">Saiba mais sobre acesso <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="sol-img">
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=500&fit=crop&auto=format" alt="Painéis solares em campo verde" />
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-1">
+      <div>
+        <div class="sol-num">7.2</div>
+        <h3 class="sol-title">Participação em Energia Renovável</h3>
+        <p class="sol-desc">Aumentar substancialmente a participação de energias renováveis na matriz energética global.</p>
+        <a href="./participacao.html" target="_self" class="sol-link">Saiba mais sobre participação <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="sol-img">
+        <img src="https://images.unsplash.com/photo-1508791290064-c27cc1ef7a9a?w=800&h=500&fit=crop&auto=format" alt="Turbinas eólicas em campo" />
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-2">
+      <div>
+        <div class="sol-num">7.3</div>
+        <h3 class="sol-title">Eficiência Energética</h3>
+        <p class="sol-desc">Dobrar a taxa global de melhoria da eficiência energética com reforço da cooperação internacional e expansão da infraestrutura e modernização da tecnologia.</p>
+        <a href="./taxa.html" target="_self" class="sol-link">Saiba mais sobre taxa <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="sol-img">
+        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&h=500&fit=crop&auto=format" alt="Painel solar sob céu azul" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="como-funciona">
+  <div class="how-inner">
+    <span class="section-label">Como funciona</span>
+    <h2>Sobre o O.D.S e a Energia Limpa</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>O que é?</h4>
+        <p>Os O.D.S (Objetivos de Desenvolvimento Sustentável) são um apelo global à ação para acabar com a pobreza, proteger o meio ambiente e o clima e garantir que as pessoas, em todos os lugares, possam desfrutar de paz e de prosperidade.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Prazo dos objetivos</h4>
+        <p>Os objetivos para os quais as Nações Unidas estão contribuindo tem o intuito de que possamos atingir a Agenda 2030 no Brasil.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Temas Abordados</h4>
+        <p>Os Objetivos de Desenvolvimento Sustentável abordam temas como educação, saúde, desigualdade, clima e meio ambiente, em total são 17 tópicos. Em cada um deles, são apresentadas suas propostas para a melhoria de cada com um prazo determinado.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Energia Limpa</h4>
+        <p>O sétimo tópico, Energia Limpa, visa garantir o acesso a energia acessível, confiável e sustentável para todos com três grandes mudanças explicadas na parte 'soluções', saiba mais explorando nosso site!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <h2>Pronto para fazer parte da <em>energia limpa</em>?</h2>
+    <p>Energia limpa e acessível já está transformando vidas, reduzindo custos e construindo um Brasil mais sustentável. O futuro começa com escolhas que cabem na realidade de todos.</p>
+    <div class="cta-btns">
+      <button class="btn-primary"><a href=https://brasil.un.org/pt-br style="color: var(--florest)">Ir para o site oficial</a></button>
+      <button class="btn-ghost"><a href=https://brasil.un.org/pt-br/sdgs style="color: var(--moss);">Ver outros objetivos de desenvolvimento sustentável</a></button>
+    </div>
+  </div>
+</section>
+</main>
+
+ <!-- IMPACT -->
+<section class="impact-section" id="impacto">
+  <div class="impact-inner">
+    <h2>A transição renovável começa <em>no Brasil</em></h2>
+    <div class="impact-stats">
+      <div class="impact-stat">
+        <div class="value">2027</div>
+        <div class="sub">Meta: avanço na transformação econômica sustentável,</div>
+        <div class="sub">inclusiva e responsiva</div>
+      </div>
+      <div class="impact-divider"></div>
+      <div class="impact-stat">
+        <div class="value">7º</div>
+        <div class="sub">Objetivo de Desenvolvimento Sustentável</div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+  
+<script>
+    function showTab(index, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + index).classList.add('active');
+    btn.classList.add('active');
+    }
+    function toggleTheme() {
+      const body = document.body;
+      const isDark = body.classList.toggle('dark-theme');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      const button = document.getElementById('theme-toggle');
+      if (button) button.textContent = isDark ? 'Tema claro' : 'Tema escuro';
+    }
+
+    function applyStoredTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const button = document.getElementById('theme-toggle');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        if (button) button.textContent = 'Tema claro';
+      } else {
+        if (button) button.textContent = 'Tema escuro';
+      }
+    }
+
+    applyStoredTheme();</script>
+</html>   

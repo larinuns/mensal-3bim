@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./acesso.css">
+</head>
+<body>
+
+  <header>
+    <span class="logo">SolarCalc</span>
+    <button class="theme-btn" id="themeBtn">Modo escuro</button>
+  </header>
+
+  <section class="hero">
+    <span class="eyebrow">Calculadora de Energia Solar</span>
+    <h1>Quanto voce gasta — e quanto o <em>sol</em> pode cobrir?</h1>
+    <p>Responda algumas perguntas sobre seus habitos e descubra seu consumo estimado, o custo mensal e quantos paineis solares bastariam para compensar.</p>
+  </section>
+
+  <div class="progress-wrap">
+    <div class="progress-meta">
+      <span>Seu perfil energetico</span>
+      <span id="progressText">0 de 9 respondidas</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-label">Quantas pessoas moram na sua casa?</div>
+      <div class="card-hint">Inclua todos os moradores fixos.</div>
+      <div class="counter">
+        <button class="counter-btn" id="pessoasMinus">&#8722;</button>
+        <span class="counter-val" id="pessoasVal">3</span>
+        <button class="counter-btn" id="pessoasPlus">+</button>
+        <span class="counter-unit">pessoas</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Quantas horas de TV por dia?</div>
+      <div class="card-hint">Media de uso na casa (uma TV de 42" usa cerca de 100 W).</div>
+      <div class="slider-wrap">
+        <div class="slider-display" id="tvDisplay">4<span>h/dia</span></div>
+        <input type="range" id="tvSlider" min="0" max="12" value="4" />
+        <div class="slider-ends"><span>0 h</span><span>12 h</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Voce usa ar-condicionado?</div>
+      <div class="card-hint">Split e janeleiro têm consumos diferentes.</div>
+      <div class="chips" id="acChips">
+        <button class="chip active" data-val="nao">Nao uso</button>
+        <button class="chip" data-val="split">Split (9 a 12k BTU)</button>
+        <button class="chip" data-val="janela">Janeleiro</button>
+      </div>
+      <div class="sub-q" id="acSub" style="display:none">
+        <div class="card-hint">Quantas horas por dia em media?</div>
+        <div class="slider-wrap">
+          <div class="slider-display" id="acHDisplay">4<span>h/dia</span></div>
+          <input type="range" id="acHSlider" min="1" max="16" value="4" />
+          <div class="slider-ends"><span>1 h</span><span>16 h</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Que tipo de chuveiro voce usa?</div>
+      <div class="card-hint">O chuveiro eletrico e um dos maiores consumidores da casa.</div>
+      <div class="chips" id="chuveiroChips">
+        <button class="chip active" data-val="eletrico">Eletrico</button>
+        <button class="chip" data-val="gas">Gas ou solar</button>
+        <button class="chip" data-val="frio">Somente frio</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Quantas vezes usa a maquina de lavar por semana?</div>
+      <div class="card-hint">Cada ciclo consome cerca de 0,4 kWh.</div>
+      <div class="counter">
+        <button class="counter-btn" id="lavMinus">&#8722;</button>
+        <span class="counter-val" id="lavVal">3</span>
+        <button class="counter-btn" id="lavPlus">+</button>
+        <span class="counter-unit">vezes / semana</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Quantas lampadas tem na sua casa?</div>
+      <div class="card-hint">Considere todas as luminárias (LED medio usa 8 W).</div>
+      <div class="slider-wrap">
+        <div class="slider-display" id="lampDisplay">10<span>lampadas</span></div>
+        <input type="range" id="lampSlider" min="1" max="40" value="10" />
+        <div class="slider-ends"><span>1</span><span>40</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Quantas geladeiras ou freezers voce tem?</div>
+      <div class="card-hint">Uma geladeira padrao consome cerca de 40 kWh por mes.</div>
+      <div class="counter">
+        <button class="counter-btn" id="gelMinus">&#8722;</button>
+        <span class="counter-val" id="gelVal">1</span>
+        <button class="counter-btn" id="gelPlus">+</button>
+        <span class="counter-unit">unidades</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Voce usa computador em casa?</div>
+      <div class="card-hint">Desktop consome bem mais que notebook.</div>
+      <div class="chips" id="compChips">
+        <button class="chip" data-val="nao">Nao uso</button>
+        <button class="chip active" data-val="notebook">Notebook</button>
+        <button class="chip" data-val="desktop">Desktop</button>
+      </div>
+      <div class="sub-q" id="compSub">
+        <div class="card-hint">Quantas horas por dia?</div>
+        <div class="slider-wrap">
+          <div class="slider-display" id="compHDisplay">4<span>h/dia</span></div>
+          <input type="range" id="compHSlider" min="1" max="12" value="4" />
+          <div class="slider-ends"><span>1 h</span><span>12 h</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-wrap">
+      <button class="cta-btn" id="calcBtn">Calcular meu consumo</button>
+    </div>
+
+  </div>
+
+  <div id="results">
+    <h2 class="results-title">Seu perfil energetico</h2>
+    <p class="results-sub">Estimativa baseada nos seus habitos. Tarifa media brasileira de R$ 0,85 / kWh.</p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-val" id="rKwh">—</div>
+        <div class="stat-unit">kWh / mes</div>
+        <div class="stat-desc">Consumo estimado</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" id="rCusto">—</div>
+        <div class="stat-unit">/ mes</div>
+        <div class="stat-desc">Custo estimado na conta</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" id="rCo2">—</div>
+        <div class="stat-unit">kg CO₂ / mes</div>
+        <div class="stat-desc">Emissoes equivalentes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" id="rAnual">—</div>
+        <div class="stat-unit">/ ano</div>
+        <div class="stat-desc">Custo anual estimado</div>
+      </div>
+    </div>
+
+    <div class="solar-card">
+      <div class="solar-label">Compensacao solar</div>
+      <h3 class="solar-headline" id="solarHeadline">Com <strong>— paineis</strong>, voce cobre <strong>—%</strong> do consumo</h3>
+      <div class="panels-row" id="panelsRow"></div>
+      <div class="solar-grid">
+        <div>
+          <div class="sg-label">Geracao estimada</div>
+          <div class="sg-val" id="rGeracao">—</div>
+        </div>
+        <div>
+          <div class="sg-label">Economia mensal</div>
+          <div class="sg-val" id="rEconMensal">—</div>
+        </div>
+        <div>
+          <div class="sg-label">Economia anual</div>
+          <div class="sg-val" id="rEconAnual">—</div>
+        </div>
+        <div>
+          <div class="sg-label">CO₂ evitado / mes</div>
+          <div class="sg-val" id="rCo2Evitado">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="co2-card">
+      <div class="co2-header">
+        <span class="co2-title">Compensacao de carbono</span>
+        <span class="co2-badge" id="co2Badge">—%</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" id="co2Bar" style="width:0%"></div>
+      </div>
+      <div class="bar-legend"><span>0% — sem paineis</span><span>100% — totalmente compensado</span></div>
+    </div>
+
+    <div class="tip" id="tipChuveiro" style="display:none">
+      <b>Dica:</b> O chuveiro eletrico pode representar ate 25% do consumo residencial. Trocar por aquecedor solar reduz a quantidade de paineis necessaria.
+    </div>
+
+    <div class="tip" id="tipAC" style="display:none">
+      <b>Ar-condicionado:</b> Manter o filtro limpo e operar entre 24 e 26 °C pode reduzir o consumo do aparelho em ate 30%.
+    </div>
+
+    <div style="text-align:center">
+      <button class="reset-btn" id="resetBtn">Refazer o calculo</button>
+    </div>
+  </div>
+
+  <footer>Valores estimados com base em medias nacionais. Consulte um instalador certificado para um orcamento preciso.</footer>
+
+</body>
+<script>
+   var state = {
+      pessoas: 3, tvH: 4,
+      ac: "nao", acH: 4,
+      chuveiro: "eletrico",
+      lav: 3, lamp: 10, gel: 1,
+      comp: "notebook", compH: 4
+    };
+
+    /* Theme */
+    var themeBtn = document.getElementById("themeBtn");
+    themeBtn.addEventListener("click", function() {
+      var dark = document.documentElement.getAttribute("data-theme") === "dark";
+      document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+      themeBtn.textContent = dark ? "Modo escuro" : "Modo claro";
+    });
+
+    /* Progress */
+    function updateProgress() {
+      var filled = [
+        state.pessoas > 0, state.tvH >= 0, state.ac !== "",
+        state.chuveiro !== "", state.lav >= 0, state.lamp > 0,
+        state.gel >= 0, state.comp !== "", state.compH >= 0
+      ].filter(Boolean).length;
+      document.getElementById("progressText").textContent = filled + " de 9 respondidas";
+      document.getElementById("progressFill").style.width = (filled / 9 * 100) + "%";
+    }
+
+    /* Counter */
+    function makeCounter(minusId, plusId, valId, key, min, max) {
+      var minus = document.getElementById(minusId);
+      var plus  = document.getElementById(plusId);
+      var val   = document.getElementById(valId);
+      function render() {
+        val.textContent = state[key];
+        minus.disabled = state[key] <= min;
+        plus.disabled  = state[key] >= max;
+      }
+      minus.addEventListener("click", function() { state[key] = Math.max(min, state[key] - 1); render(); updateProgress(); });
+      plus.addEventListener("click",  function() { state[key] = Math.min(max, state[key] + 1); render(); updateProgress(); });
+      render();
+    }
+
+    makeCounter("pessoasMinus", "pessoasPlus", "pessoasVal", "pessoas", 1, 15);
+    makeCounter("lavMinus",     "lavPlus",     "lavVal",     "lav",     0, 14);
+    makeCounter("gelMinus",     "gelPlus",     "gelVal",     "gel",     0,  5);
+
+    /* Slider */
+    function makeSlider(sliderId, displayId, key, unit) {
+      var slider  = document.getElementById(sliderId);
+      var display = document.getElementById(displayId);
+      function render() {
+        var pct = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+        slider.style.background = "linear-gradient(90deg, var(--leaf) " + pct + "%, var(--mist) " + pct + "%)";
+        display.innerHTML = slider.value + "<span>" + unit + "</span>";
+        state[key] = +slider.value;
+      }
+      slider.addEventListener("input", function() { render(); updateProgress(); });
+      render();
+    }
+
+    makeSlider("tvSlider",    "tvDisplay",    "tvH",  "h/dia");
+    makeSlider("acHSlider",   "acHDisplay",   "acH",  "h/dia");
+    makeSlider("lampSlider",  "lampDisplay",  "lamp", "lampadas");
+    makeSlider("compHSlider", "compHDisplay", "compH","h/dia");
+
+    /* Chips */
+    function makeChips(groupId, key, onchange) {
+      var group = document.getElementById(groupId);
+      group.querySelectorAll(".chip").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          group.querySelectorAll(".chip").forEach(function(b) { b.classList.remove("active"); });
+          btn.classList.add("active");
+          state[key] = btn.getAttribute("data-val");
+          if (onchange) onchange(state[key]);
+          updateProgress();
+        });
+      });
+    }
+
+    makeChips("acChips", "ac", function(val) {
+      document.getElementById("acSub").style.display = val === "nao" ? "none" : "block";
+    });
+
+    makeChips("chuveiroChips", "chuveiro", null);
+
+    makeChips("compChips", "comp", function(val) {
+      document.getElementById("compSub").style.display = val === "nao" ? "none" : "block";
+    });
+
+    /* Calc */
+    function calcular() {
+      var TARIFA = 0.85, PAINEL = 35, CO2 = 0.0817;
+      var kwh = 0;
+      kwh += state.pessoas * 15;
+      kwh += state.tvH * 0.1 * 30;
+      if (state.ac === "split")    kwh += state.acH * 0.9  * 30;
+      if (state.ac === "janela")   kwh += state.acH * 1.35 * 30;
+      if (state.chuveiro === "eletrico") kwh += state.pessoas * 0.73 * 30;
+      if (state.chuveiro === "gas")      kwh += state.pessoas * 0.05 * 30;
+      kwh += state.lav  * 0.375 * 4.3;
+      kwh += state.lamp * 0.008 * 5 * 30;
+      kwh += state.gel  * 40;
+      if (state.comp === "notebook") kwh += state.compH * 0.06 * 30;
+      if (state.comp === "desktop")  kwh += state.compH * 0.20 * 30;
+
+      var total   = Math.round(kwh);
+      var custo   = (total * TARIFA).toFixed(2);
+      var paineis = Math.ceil(total / PAINEL);
+      var geracao = paineis * PAINEL;
+      var econ    = (Math.min(geracao, total) * TARIFA).toFixed(2);
+      var pct     = Math.min(100, Math.round(geracao / total * 100));
+      var co2     = (total * CO2).toFixed(1);
+      var co2ev   = (Math.min(geracao, total) * CO2).toFixed(1);
+      return { total: total, custo: custo, paineis: paineis, geracao: geracao, econ: econ, pct: pct, co2: co2, co2ev: co2ev };
+    }
+
+    function fmt(n) {
+      return Number(n).toLocaleString("pt-BR", { minimumFractionDigits: 2 });
+    }
+
+    /* Render */
+    document.getElementById("calcBtn").addEventListener("click", function() {
+      var r = calcular();
+
+      document.getElementById("rKwh").textContent   = r.total.toLocaleString("pt-BR");
+      document.getElementById("rCusto").textContent  = "R$ " + fmt(r.custo);
+      document.getElementById("rCo2").textContent    = r.co2;
+      document.getElementById("rAnual").textContent  = "R$ " + fmt((+r.custo * 12).toFixed(2));
+
+      var plural = r.paineis !== 1 ? "paineis" : "painel";
+      document.getElementById("solarHeadline").innerHTML =
+        "Com <strong>" + r.paineis + " " + plural + "</strong>, voce cobre <strong>" + r.pct + "%</strong> do consumo";
+
+      document.getElementById("rGeracao").textContent    = r.geracao + " kWh/mes";
+      document.getElementById("rEconMensal").textContent = "R$ " + fmt(r.econ);
+      document.getElementById("rEconAnual").textContent  = "R$ " + fmt((+r.econ * 12).toFixed(2));
+      document.getElementById("rCo2Evitado").textContent = r.co2ev + " kg";
+      document.getElementById("co2Badge").textContent    = r.pct + "%";
+      document.getElementById("co2Bar").style.width      = r.pct + "%";
+
+      var row   = document.getElementById("panelsRow");
+      var shown = Math.min(r.paineis, 30);
+      row.innerHTML = "";
+      for (var i = 0; i < shown; i++) {
+        var p = document.createElement("div");
+        p.className = "panel";
+        row.appendChild(p);
+      }
+      if (r.paineis > 30) {
+        var more = document.createElement("span");
+        more.className = "more-panels";
+        more.textContent = "+" + (r.paineis - 30) + " mais";
+        row.appendChild(more);
+      }
+
+      document.getElementById("tipChuveiro").style.display = state.chuveiro === "eletrico" ? "block" : "none";
+      document.getElementById("tipAC").style.display       = state.ac !== "nao" ? "block" : "none";
+
+      var section = document.getElementById("results");
+      section.classList.add("visible");
+      setTimeout(function() { section.scrollIntoView({ behavior: "smooth", block: "start" }); }, 80);
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", function() {
+      document.getElementById("results").classList.remove("visible");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    updateProgress();
+</script>
+</html>
