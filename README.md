@@ -1,1 +1,1 @@
-Favor colocar os nomes dos participantes e o Tema do Trablalho.
+Larissa Nunes, Gabriela Coelho e Ana Beatriz Almeida
