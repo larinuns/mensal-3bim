@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LuzVerde Calculadora</title>
     <link rel="stylesheet" href="./acesso.css">
 </head>
 <body>
 
   <header>
-    <span class="logo">SolarCalc</span>
-    <button class="theme-btn" id="themeBtn">Modo escuro</button>
-  </header>
+    <span class="logo">LuzVerde Calculadora</span>
+    <table>
+      <tr>
+        <td>
+          <button class="back-btn" id="backBtn" onclick="window.history.back()">&#8592; Voltar</button>
+          <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">Modo escuro</button>
+        </td>
+      </tr>
+    </table>
+    </header>
 
   <section class="hero">
     <span class="eyebrow">Calculadora de Energia Solar</span>
@@ -71,8 +78,15 @@
     </div>
 
     <div class="card">
-      <div class="card-label">Que tipo de chuveiro voce usa?</div>
+      <div class="card-label">Que tipo de chuveiro voce usa? Quantos você possui?</div>
       <div class="card-hint">O chuveiro eletrico e um dos maiores consumidores da casa.</div>
+      
+      <div class="slider-wrap">
+        <div class="slider-display" id="chuveiroDisplay">1<span>unidade</span></div>
+        <input type="range" id="chuveiroSlider" min="1" max="10" value="1" />
+        <div class="slider-ends"><span>1</span><span>10</span></div>
+      </div>
+      <br>
       <div class="chips" id="chuveiroChips">
         <button class="chip active" data-val="eletrico">Eletrico</button>
         <button class="chip" data-val="gas">Gas ou solar</button>
@@ -276,6 +290,7 @@
     }
 
     makeSlider("tvSlider",    "tvDisplay",    "tvH",  "h/dia");
+    makeSlider("chuveiroSlider", "chuveiroDisplay", "chuveiroCount", "unidades");
     makeSlider("acHSlider",   "acHDisplay",   "acH",  "h/dia");
     makeSlider("lampSlider",  "lampDisplay",  "lamp", "lampadas");
     makeSlider("compHSlider", "compHDisplay", "compH","h/dia");

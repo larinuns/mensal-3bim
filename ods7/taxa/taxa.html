@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="<!-- figma:lang -->">
+  <head>
+    <!-- figma:head-start -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Calcule a taxa de crescimento da sua produção de energia renovável."
+    />
+    <title>LuzVerde Taxa</title>
+    <link rel="stylesheet" href="/ods7/taxa/taxa.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="VerdeMétrica — início">
+          <span class="brand-mark" aria-hidden="true">
+            <svg
+              class="brand-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19.5 4.5C12 5.1 6.4 8.2 5.1 13.2c-.6 2.3.4 4.6 2.6 5.5 2.5 1 5-.3 6.5-2.2 2.2-2.8 3.1-6.8 5.3-12Z"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.7"
+              ></path>
+              <path
+                d="M4.2 20c2.1-4.1 5.3-7 10.3-9.4"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="1.7"
+              ></path>
+            </svg>
+          </span>
+          <span>LuzVerde Taxa</span>
+        </a>
+
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Ativar modo escuro"
+          aria-pressed="false"
+        >
+          <span id="theme-label" class="theme-label">Modo escuro</span>
+          </span>
+        </button>
+        <button
+            id="back-toggle"
+            class="back-toggle"
+            type="button"
+            aria-label="Voltar"
+            aria-pressed="false"
+            >
+          <span id="back-label" class="back-label">Voltar</span>
+          </span>
+        </button>
+      </header>
+
+      <main class="main-content">
+        <section class="intro" aria-labelledby="page-title">
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            ENERGIA QUE EVOLUI
+          </div>
+          <h1 id="page-title">
+            Transforme produção
+            <br />
+            em <em>progresso.</em>
+          </h1>
+          <p class="intro-copy">
+            Compare a produção de energia renovável entre dois anos e descubra,
+            em segundos, o quanto sua geração avançou.
+          </p>
+
+          <div class="formula-card">
+            <span class="formula-icon">
+              <svg
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m13 2-8 12h7l-1 8 8-12h-7l1-8Z"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.7"
+                ></path>
+              </svg>
+            </span>
+            <span>
+              <strong>Fórmula</strong>
+              <small>(final − inicial) ÷ inicial × 100</small>
+            </span>
+            <br>
+            <span>
+              <strong>Exemplo</strong>
+              <small>Em 2024, uma cidade produziu 200 MWh de energia limpa. Em 2025, produziu 260 MWh.</small>
+              <small>(260 − 200) ÷ 200 × 100 = 30%</small>
+            </span>
+          </div>
+        </section>
+
+        <section class="calculator-card" aria-labelledby="calculator-title">
+          <div class="card-heading">
+            <span class="step-number">01</span>
+            <span>
+              <h2 id="calculator-title">Dados de produção</h2>
+              <p>Preencha os valores para fazer a comparação.</p>
+            </span>
+          </div>
+
+          <form id="energy-form">
+            <div class="period">
+              <div class="period-column">
+                <span class="period-tag">PONTO DE PARTIDA</span>
+
+                <label class="field" for="initial-year">
+                  <span class="field-label">Ano inicial</span>
+                  <span class="input-wrap">
+                    <input
+                      id="initial-year"
+                      type="number"
+                      inputmode="numeric"
+                      min="1900"
+                      max="2200"
+                      step="1"
+                      value="2023"
+                      required
+                    />
+                  </span>
+                </label>
+
+                <label class="field" for="initial-production">
+                  <span class="field-label">Produção inicial</span>
+                  <span class="input-wrap">
+                    <input
+                      id="initial-production"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      step="any"
+                      placeholder="0"
+                      required
+                    />
+                    <span class="input-suffix">MWh</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="period-divider" aria-hidden="true">
+                <span>
+                  <svg fill="none" viewBox="0 0 24 24">
+                    <path
+                      d="M5 12h14m-5-5 5 5-5 5"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.7"
+                    ></path>
+                  </svg>
+                </span>
+              </div>
+
+              <div class="period-column">
+                <span class="period-tag">RESULTADO ATUAL</span>
+
+                <label class="field" for="final-year">
+                  <span class="field-label">Ano final</span>
+                  <span class="input-wrap">
+                    <input
+                      id="final-year"
+                      type="number"
+                      inputmode="numeric"
+                      min="1900"
+                      max="2200"
+                      step="1"
+                      value="2024"
+                      required
+                    />
+                  </span>
+                </label>
+
+                <label class="field" for="final-production">
+                  <span class="field-label">Produção final</span>
+                  <span class="input-wrap">
+                    <input
+                      id="final-production"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      step="any"
+                      placeholder="0"
+                      required
+                    />
+                    <span class="input-suffix">MWh</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <p id="error-message" class="error-message" role="alert" hidden></p>
+
+            <button class="calculate-button" type="submit">
+              Calcular taxa
+              <svg
+                class="button-icon"
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M5 12h14m-5-5 5 5-5 5"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                ></path>
+              </svg>
+            </button>
+          </form>
+
+          <div id="result" class="result" aria-live="polite" hidden>
+            <div class="result-topline">
+              <span>VARIAÇÃO CALCULADA</span>
+              <span id="result-status" class="result-status"></span>
+            </div>
+            <div class="result-value">
+              <span id="result-number"></span><small>%</small>
+            </div>
+            <p id="result-description"></p>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>Feito para um futuro mais renovável.</span>
+        <span class="footer-line"></span>
+        <span>Dados que impulsionam decisões.</span>
+      </footer>
+    </div>
+
+    <script>
+        const root = document.documentElement;
+        const themeToggle = document.querySelector("#theme-toggle");
+        const themeIcon = document.querySelector("#theme-icon");
+        const themeLabel = document.querySelector("#theme-label");
+        const form = document.querySelector("#energy-form");
+        const errorMessage = document.querySelector("#error-message");
+        const result = document.querySelector("#result");
+        const resultStatus = document.querySelector("#result-status");
+        const resultNumber = document.querySelector("#result-number");
+        const resultDescription = document.querySelector("#result-description");
+
+
+function setTheme(theme) {
+  const isDark = theme === "dark";
+
+  root.dataset.theme = theme;
+  localStorage.setItem("energy-theme", theme);
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.setAttribute(
+    "aria-label",
+    `Ativar modo ${isDark ? "claro" : "escuro"}`,
+  );
+}
+
+const savedTheme = localStorage.getItem("energy-theme");
+const preferredTheme =
+  savedTheme === "light" || savedTheme === "dark"
+    ? savedTheme
+    : window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+
+setTheme(preferredTheme);
+
+themeToggle.addEventListener("click", () => {
+  setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+});
+
+function showError(message) {
+  errorMessage.textContent = message;
+  errorMessage.hidden = false;
+  result.hidden = true;
+}
+
+function formatNumber(value, options = {}) {
+  return value.toLocaleString("pt-BR", options);
+}
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const initialYear = document.querySelector("#initial-year").value;
+  const finalYear = document.querySelector("#final-year").value;
+  const initial = Number(document.querySelector("#initial-production").value);
+  const final = Number(document.querySelector("#final-production").value);
+
+  if (!Number.isFinite(initial) || initial <= 0) {
+    showError("A produção inicial precisa ser maior que zero.");
+    return;
+  }
+
+  if (!Number.isFinite(final) || final < 0) {
+    showError("Informe uma produção final válida.");
+    return;
+  }
+
+  if (Number(finalYear) <= Number(initialYear)) {
+    showError("O ano final deve ser posterior ao ano inicial.");
+    return;
+  }
+
+  const rate = ((final - initial) / initial) * 100;
+  const kind = rate > 0 ? "positive" : rate < 0 ? "negative" : "neutral";
+  const status =
+    kind === "positive"
+      ? "Crescimento"
+      : kind === "negative"
+        ? "Redução"
+        : "Estável";
+  const movement =
+    kind === "positive"
+      ? "cresceu"
+      : kind === "negative"
+        ? "reduziu"
+        : "permaneceu estável";
+
+  errorMessage.hidden = true;
+  result.className = `result result-${kind}`;
+  resultStatus.textContent = status;
+  resultNumber.textContent = `${rate > 0 ? "+" : ""}${formatNumber(rate, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 2,
+  })}`;
+  resultDescription.textContent =
+    `Entre ${initialYear} e ${finalYear}, a produção ${movement} ` +
+    `de ${formatNumber(initial)} MWh para ${formatNumber(final)} MWh.`;
+  result.hidden = false;
+});
+
+    </script>
+  </body>
+</html>
